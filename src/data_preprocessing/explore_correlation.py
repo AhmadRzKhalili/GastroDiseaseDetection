@@ -2,20 +2,23 @@ import matplotlib.pyplot as plt
 from pandas import DataFrame
 
 from ..utils import load_csv_to_df
+from .cleanup_tabular_data import encode_non_numeric_features
 
 
 def explore_correlation(
     csv_file_path,
     method: str = "pearson",
+    encode_non_numeric: bool = False,
     annot: bool = False,
     cmap: str = "coolwarm",
     figsize: tuple = (12, 10),
     title: str = "Feature Correlation Matrix",
     show_plot: bool = True,
     save_path=None,
+    **kwargs,
 ):
     """
-    Computes and plots the correlation matrix for numerical features in a dataset.
+    Computes and plots the correlation matrix for features in a dataset.
 
     Parameters:
     -----------
@@ -23,6 +26,9 @@ def explore_correlation(
         Path to the CSV dataset or an existing pandas DataFrame.
     method : {'pearson', 'kendall', 'spearman'}, default 'pearson'
         Method of correlation computation.
+    encode_non_numeric : bool, default False
+        Whether to encode non-numeric (categorical/object/string) features into numeric
+        codes before computing correlation.
     annot : bool, default False
         Whether to annotate correlation coefficients inside each heatmap cell.
     cmap : str, default 'coolwarm'
@@ -39,9 +45,15 @@ def explore_correlation(
     Returns:
     --------
     DataFrame
-        Correlation matrix of the numeric features.
+        Correlation matrix of the features.
     """
+    if "encode_categorical" in kwargs:
+        encode_non_numeric = kwargs.pop("encode_categorical")
+
     df = load_csv_to_df(csv_file_path)
+
+    if encode_non_numeric:
+        df = encode_non_numeric_features(df)
 
     numeric_df = df.select_dtypes(include="number")
     corr_matrix = numeric_df.corr(method=method)

@@ -3,23 +3,15 @@ from pandas import read_csv, DataFrame
 
 from ..constants import PACKAGE_ROOT
 
-def analyse_table_features(csv_file_path):
+def get_rows_with_missing_data(csv_file_path):
+    if isinstance(csv_file_path, DataFrame):
+        df = csv_file_path
+    else:
+        df = load_csv_to_df(csv_file_path)
 
-    df = load_csv_to_df(csv_file_path)
-    
-    return df.columns.to_series().groupby(df.dtypes).groups
-
-def analyse_numeric_features_range(csv_file_path):
-
-    df = load_csv_to_df(csv_file_path)
-    
-    numeric_cols = df.select_dtypes(include='number').columns
-    ranges = {col: (float(df[col].min()), float(df[col].max())) for col in numeric_cols}
-
-    return ranges
+    return df[df.isna().any(axis=1)]
 
 def load_csv_to_df(csv_file_path):
-
     path = Path(csv_file_path)
         
     if not path.is_file():

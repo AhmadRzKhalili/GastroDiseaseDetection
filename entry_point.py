@@ -1,6 +1,6 @@
 import pprint
 
-from src import analyse_numeric_features_range
+from src import get_rows_with_missing_data
 
 if __name__ == "__main__":
-    pprint.pp(analyse_numeric_features_range("../../datasets/gastrointestinal_disease_dataset.csv"))
+    pprint.pp(get_rows_with_missing_data("../../datasets/gastrointestinal_disease_dataset.csv"))

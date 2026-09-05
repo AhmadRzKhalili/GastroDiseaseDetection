@@ -1,3 +1,3 @@
-from .src import get_table_features
+from .src import analyse_table_features
 
 

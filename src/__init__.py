@@ -1,1 +1,1 @@
-from .data_preprocessing import get_table_features
+from .data_preprocessing import analyse_table_features

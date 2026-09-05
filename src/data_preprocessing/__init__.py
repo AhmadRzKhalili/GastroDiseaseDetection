@@ -1,1 +1,1 @@
-from .analyse_tabular_data import get_table_features
+from .analyse_tabular_data import analyse_table_features

@@ -1,6 +1,7 @@
 import pprint
 
-from src import get_rows_with_missing_data
+from src import explore_correlation
 
 if __name__ == "__main__":
-    pprint.pp(get_rows_with_missing_data("../../datasets/gastrointestinal_disease_dataset.csv"))
+    corr_matrix = explore_correlation("../../datasets/gastrointestinal_disease_dataset.csv")
+    pprint.pp(corr_matrix)

@@ -1,1 +1,1 @@
-from .analyse_tabular_data import analyse_table_features
+from .analyse_tabular_data import analyse_table_features, analyse_numeric_features_range

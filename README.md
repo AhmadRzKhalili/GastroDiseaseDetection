@@ -7,6 +7,8 @@ The dataset is located locally at `datasets/gastrointestinal_disease_dataset.csv
 
 ### About the Dataset
 
+The CSV file contains no missing values, so no data cleanup or imputation is required.
+
 This dataset is designed to aid research and analysis in the field of gastrointestinal and autoimmune diseases. It includes medical history, genetic predisposition, lifestyle factors, and clinical indicators for predicting and understanding disease classification. 
 
 Key attributes include:

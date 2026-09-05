@@ -26,6 +26,4 @@ env/
 .DS_Store
 Thumbs.db
 
-# Datasets
-./datasets
-
+datasets/

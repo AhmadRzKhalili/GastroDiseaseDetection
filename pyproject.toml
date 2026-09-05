@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gastro-disease-detection"
+version = "0.1.0"
+description = "Gastrointestinal disease detection using clinical and tabular data"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.20.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "configs*"]
+

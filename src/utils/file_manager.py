@@ -23,4 +23,4 @@ def load_csv_to_df(csv_file_path):
         elif (PACKAGE_ROOT / path).is_file():
             path = PACKAGE_ROOT / path
 
-    return read_csv(path)
+    return read_csv(path, low_memory=False)
